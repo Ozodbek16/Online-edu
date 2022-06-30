@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{> head}}
+
+<body>
+    <div class="d-flex" id="wrapper">
+        {{> sidebar}}
+        <div id="page-content-wrapper">
+            {{> navbar}}
+            {{{body}}}
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/index.js"></script>
+</body>
+
+</html>
