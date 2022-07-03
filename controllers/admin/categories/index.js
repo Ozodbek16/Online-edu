@@ -2,7 +2,7 @@ const Joi = require('joi')
 const Category = require('../../../models/category')
 
 module.exports = {
-    home: async (req, res) => {
+    async homeCategory(req, res) {
         const categories = await Category.find()
         res.render('admin/categories', {
             title: 'Categories page',
@@ -11,7 +11,7 @@ module.exports = {
         })
     },
 
-    add: async (req, res) => {
+    async addCategory(req, res) {
         const error = validateCategory(req.body)
 
         if (!!error) {
@@ -28,38 +28,11 @@ module.exports = {
         res.redirect('/api/category')
     },
 
-    getAddCategory: async (req, res) => {
+    async getAddCategory(req, res) {
         res.render('admin/addCategory', {
             title: 'Add category',
             layout: '../admin/layouts/main'
         })
-    },
-    delete: async (req, res) => {
-        await Category.findByIdAndDelete(req.params.id)
-        res.redirect('/')
-    },
-    updatePage: async (req, res) => {
-        const categories = await Category.find({ _id: req.params.id }).limit(1)
-        let category = categories[0]
-        res.render('admin/updateCategory', {
-            title: category.name,
-            category,
-            layout: '../admin/layouts/main'
-        })
-    },
-    update: async (req, res) => {
-        const error = validateCategory(req.query)
-
-        if (!!error) {
-            res.status(400).send(error.message)
-        }
-
-        await Category.findByIdAndUpdate(req.params.id, {
-            name: req.query.name,
-            img: req.query.img
-        })
-
-        res.redirect('/api/category')
     }
 }
 

@@ -9,8 +9,4 @@ router.get('/', admin.home)
 // Category
 router.use('/category', category)
 
-// Courses
-// router.use('/course', course)
-
-
 module.exports = router

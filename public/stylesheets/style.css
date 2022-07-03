@@ -12279,25 +12279,3 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
   }
 }
 
-#sidebarToggle {
-  font-size: 25px;
-}
-
-.ava-user {
-  display: inline-block;
-  width: 42px;
-  height: 42px;
-  margin-right: 5px;
-}
-
-.ava-user img {
-  width: 100%;
-}
-
-.category{
-  width: 300px;
-  overflow: hidden;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-}
