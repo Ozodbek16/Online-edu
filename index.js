@@ -51,12 +51,11 @@ app.use(session({
 }))
 
 // Logger
-if (process.env.NODE_ENV === 'development') {
-    app.use(morgan('tiny'))
-}
+// if (process.env.NODE_ENV === 'development') {
+//     app.use(morgan('tiny'))
+// }
 
 app.use(userMiddleware)
-
 // Routing
 app.use('/api/', authRoutes)
 

@@ -33,6 +33,27 @@ module.exports = {
             title: 'Add category',
             layout: '../admin/layouts/main'
         })
+    },
+
+    async deleteCategory(req, res) {
+        async (req, res) => {
+            await Category.findByIdAndDelete(req.params.id)
+            res.redirect('/api/category')
+        }
+    },
+    async updateCategory(req, res) {
+        const { name, img } = req.query
+        await Category.findByIdAndUpdate(req.params.id,{ name: name, img: img })
+        res.redirect('/api/category')
+    },
+
+    async updateCategoryPage(req, res) {
+        const category = await Category.findById(req.params.id)
+        res.render('admin/editCategory', {
+            title: category.name,
+            category,
+            layout: '../admin/layouts/main'
+        })
     }
 }
 

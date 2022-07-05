@@ -1,12 +1,18 @@
 <h1>{{title}}</h1>
 
 {{#if categories.length}}
-{{#each categories}}
-<div class="category">
-    <h3>{{name}}</h3>
-    <img src="{{img}}" alt="{{img}}">
+<div class="container">
+    <div class="row justify-content-around">
+        {{#each categories}}
+        <div class="category col-3">
+            <h3>{{name}}</h3>
+            <a href="/api/category/del/{{_id}}">Delete</a>
+            <a href="/api/category/edit/{{_id}}">Edit</a>
+            <img src="{{img}}" alt="{{img}}">
+        </div>
+        {{/each}}
+    </div>
 </div>
-{{/each}}
 {{else}}
 <h2>Categories are empty</h2>
 {{/if}}

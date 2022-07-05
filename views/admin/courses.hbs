@@ -1,0 +1,20 @@
+<h1>{{title}}</h1>
+
+{{#if courses.length}}
+<div class="container">
+    <div class="row justify-content-around">
+        {{#each courses}}
+        <div class="category col-3">
+            <h3>{{name}}</h3>
+            <a href="/api/courses/del/{{_id}}">Delete</a>
+            <a href="/api/courses/edit/{{_id}}">Edit</a>
+            <img width="100%" src="{{img}}" alt="{{img}}">
+        </div>
+        {{/each}}
+    </div>
+</div>
+{{else}}
+<h2>Courses are empty</h2>
+{{/if}}
+
+<a href="/api/courses/add">Add new course</a>

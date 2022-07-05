@@ -1,0 +1,18 @@
+<form action="/api/courses/update/{{course._id}}">
+    <label for="name">Name</label>
+    <input type="text" required value="{{course.name}}" name="name" id="name">
+    <br><br>
+    <label for="img">Image</label>
+    <input type="text" required value="{{course.img}}" name="img" id="img">
+    <br><br>
+    <label for="price">Price</label>
+    <input type="number" required value="{{course.price}}" name="price" id="price">
+    <br><br>
+    <label for="category">Select category</label>
+    <select name="categoryId" id="category">
+        {{#each category}}
+        <option value="{{_id}}">{{name}}</option>
+        {{/each}}
+    </select>
+    <button type="submit">Submit</button>
+</form>
