@@ -10,8 +10,12 @@
                 <li>
                     <a href="#!">
                         <span class="ava-user">
+                            {{#if admin.adminImg}}
+                            <img src="/img/{{admin.adminImg}}" alt="{{admin.adminImg}}">
+                            {{else}}
                             <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg"
                                 alt="">
+                            {{/if}}
                         </span>
                         {{admin.username}}
                     </a>

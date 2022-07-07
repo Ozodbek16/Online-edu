@@ -6,6 +6,8 @@ const morgan = require('morgan')
 const session = require('express-session')
 const MongoDBStore = require('connect-mongodb-session')(session);
 
+const flash = require('connect-flash')
+
 
 // dotenv connecting
 require('dotenv').config()
@@ -17,6 +19,7 @@ const userMiddleware = require('./middleware/user')
 // Require routes
 const adminRouter = require('./routes/admin/admin')
 const authRoutes = require('./routes/admin/auth')
+const errorMiddleware = require('./middleware/error')
 
 // Connect create
 const hbs = create({
@@ -31,7 +34,8 @@ const hbs = create({
 require('./helper/db')(process.env.MONGO_URI)
 const store = new MongoDBStore({
     uri: process.env.MONGO_URI,
-    collection: 'mySession'
+    collection: 'mySession',
+    expires: 1000 * 60
 })
 
 // HBS connect
@@ -50,6 +54,9 @@ app.use(session({
     store
 }))
 
+
+app.use(flash())
+
 // Logger
 // if (process.env.NODE_ENV === 'development') {
 //     app.use(morgan('tiny'))
@@ -58,8 +65,9 @@ app.use(session({
 app.use(userMiddleware)
 // Routing
 app.use('/api/', authRoutes)
-
 app.use('/api/', authMiddleware, adminRouter)
+app.use(errorMiddleware)
+
 
 const port = normalizePort(process.env.port || '5000')
 app.set('port', port)
