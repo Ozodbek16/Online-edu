@@ -1,12 +1,12 @@
-<form action="/api/courses/add" method="post">
+<form action="/api/courses/add" method="post" enctype="multipart/form-data">
     <label for="name">Name</label>
     <input type="text" name="name" id="name">
     <br><br>
-    <label for="img">Image</label>
-    <input type="text" name="img" id="img">
-    <br><br>
     <label for="price">Price</label>
     <input type="number" name="price" id="price">
+    <br><br>
+    <label for="img">Image</label>
+    <input type="file" name="img" id="img">
     <br><br>
     <label for="category">Select category</label>
     <select name="categoryId" id="category">
