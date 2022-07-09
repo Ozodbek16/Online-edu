@@ -1,5 +1,6 @@
 const Joi = require('joi')
 const Category = require('../../../models/category')
+const Delete = require('../../../utils/toDelete')
 
 module.exports = {
     async homeCategory(req, res) {
@@ -12,6 +13,12 @@ module.exports = {
     },
 
     async addCategory(req, res) {
+        if (req.file != undefined) {
+            req.body.img = req.file.filename
+        } else {
+            req.body.img = '' || null
+        }
+
         const error = validateCategory(req.body)
 
         if (!!error) {
@@ -36,14 +43,20 @@ module.exports = {
     },
 
     async deleteCategory(req, res) {
-        async (req, res) => {
-            await Category.findByIdAndDelete(req.params.id)
-            res.redirect('/api/category')
-        }
+        const category = await Category.findById(req.params.id)
+        await Delete(category.img)
+        await Category.findByIdAndDelete(req.params.id)
+        res.redirect('/api/category')
     },
     async updateCategory(req, res) {
+        const category = await Category.findById(req.params.id)
+        if (req.file != undefined) {
+            req.query.img = req.file.filename
+        } else {
+            req.query.img = category.img
+        }
         const { name, img } = req.query
-        await Category.findByIdAndUpdate(req.params.id,{ name: name, img: img })
+        await Category.findByIdAndUpdate(req.params.id, { name: name, img: img })
         res.redirect('/api/category')
     },
 

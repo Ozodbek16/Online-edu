@@ -55,7 +55,7 @@ module.exports = {
     },
 
     async register(req, res) {
-        if (req.file) {
+        if (req.file != undefined) {
             req.body.adminImg = req.file.filename
         }
 

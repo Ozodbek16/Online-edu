@@ -2,12 +2,12 @@ const multer = require('multer')
 const moment = require('moment')
 const path = require('path')
 
-const filePath = path.join(require.main.filename)
+const filePath = path.join(__dirname)
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         // file qaysi papkaga tushushi
-        cb(null, filePath + '/../public/img')
+        cb(null, path.join(__dirname, '..', 'public', 'img'))
     },
     filename: function (req, file, cb) {
         // file nomi // fayli hech qachon bir xil bo'masligi kerak

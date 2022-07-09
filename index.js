@@ -35,7 +35,7 @@ require('./helper/db')(process.env.MONGO_URI)
 const store = new MongoDBStore({
     uri: process.env.MONGO_URI,
     collection: 'mySession',
-    expires: 1000 * 60
+    expires: 1000 * 300
 })
 
 // HBS connect
