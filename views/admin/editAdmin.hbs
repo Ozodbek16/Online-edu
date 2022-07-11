@@ -1,0 +1,29 @@
+<div class="content">
+    <h1>Edit accaunt</h1>
+    <form action="/api/user/update/{{admin._id}}" enctype="multipart/form-data">
+        <label for="username">Username</label>
+        <br>
+        <input type="text" value="{{admin.username}}" name="username" id="username">
+        <br><br>
+        <label for="password">Password</label>
+        <br>
+        <input type="password" name="password" id="password">
+        <br><br>
+        <label for="name">Name</label>
+        <br>
+        <input type="text" value="{{admin.name}}" name="name" id="name">
+        <br><br>
+        <label for="surname">Surname</label>
+        <br>
+        <input type="text" value="{{admin.surname}}" name="surname" id="surname">
+        <br><br>
+        <label for="adminImg">Avatar</label>
+        <br>
+        <input type="file" name="adminImg" id="adminImg">
+        <br><br>
+        <input type="submit" class="btn btn-submit">
+    </form>
+    <br>
+
+    <a href="/api/login">Sign-in</a>
+</div>
