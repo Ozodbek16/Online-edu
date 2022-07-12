@@ -68,7 +68,7 @@ app.use('/api/', authMiddleware, adminRouter)
 app.use(errorMiddleware)
 
 
-const port = normalizePort(process.env.port || '5000')
+const port = normalizePort(process.env.PORT || '5000')
 app.set('port', port)
 
 try {
